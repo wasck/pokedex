@@ -6,6 +6,7 @@ import { Component } from '@angular/core';
     <mat-toolbar color="primary">
       <span>{{title}}</span>
     </mat-toolbar>
+    <router-outlet></router-outlet>
   `,
   styles: [''],
 })
