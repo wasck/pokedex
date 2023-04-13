@@ -1,0 +1,51 @@
+{
+  "name": "domains-pokedex",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/domains/pokedex/src",
+  "prefix": "pokedex",
+  "tags": ["domain"],
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:package",
+      "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
+      "options": {
+        "project": "libs/domains/pokedex/ng-package.json",
+        "tailwindConfig": "libs/domains/pokedex/tailwind.config.js"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/domains/pokedex/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/domains/pokedex/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "libs/domains/pokedex/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "libs/domains/pokedex/**/*.ts",
+          "libs/domains/pokedex/**/*.html"
+        ]
+      }
+    }
+  }
+}
