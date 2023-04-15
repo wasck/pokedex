@@ -1,1 +1,1 @@
-export const getGreeting = () => cy.get('h1');
+export const getToolbar = () => cy.get('pokedex-root > mat-toolbar');
