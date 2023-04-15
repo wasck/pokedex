@@ -1,7 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
-import { Pokemon } from '../../../domain/entities/pokemon.model';
 
 
 @Component({
@@ -19,10 +18,10 @@ import { Pokemon } from '../../../domain/entities/pokemon.model';
       <mat-card *ngFor="let pokemon of pokemons">
         <mat-card-header>
           <mat-card-title>
-            {{pokemon.name}}
+            Name: {{pokemon.name | uppercase}}
           </mat-card-title>
         </mat-card-header>
-        <img [src]="pokemon.img" [alt]="pokemon.name">
+        <img [src]="pokemon.sprites.other.dream_world.front_default" [alt]="pokemon.name">
         <mat-card-content>
           content
         </mat-card-content>
@@ -43,10 +42,20 @@ import { Pokemon } from '../../../domain/entities/pokemon.model';
         flex-direction: row;
         flex-wrap: wrap;
         padding: 1rem;
-        gap: .5reM;
+        gap: 2reM;
+      }
+      img {
+        height: 100%;
+        object-fit: fill;
+        background-color: #b2ad7f;
       }
       mat-card {
+        min-width: 250px;
         max-width: 250px;
+
+        box-shadow: 5px 3px 20px -3px rgba(0,0,0,0.38);
+        -webkit-box-shadow: 5px 3px 20px -3px rgba(0,0,0,0.38);
+        -moz-box-shadow: 5px 3px 20px -3px rgba(0,0,0,0.38);
       }
     `,
   ],
@@ -54,5 +63,5 @@ import { Pokemon } from '../../../domain/entities/pokemon.model';
 })
 export class PokemonGridViewComponent {
 
-  @Input() public pokemons: Array<Pokemon> = [];
+  @Input() public pokemons: Array<any> = [];
 }
